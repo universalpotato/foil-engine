@@ -1,6 +1,6 @@
 # Foil engine
 
-A Rust rules engine for Magic: The Gathering (Standard).
+A high-performance Rust rules engine for Magic: The Gathering (Standard).
 
 - `mtg-core/`: game state, rules, card compilation.
 - `forge-script/`: parser for Forge card scripts.
