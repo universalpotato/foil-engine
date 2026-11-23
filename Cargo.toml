@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = ["forge-script", "mtg-core"]
+
+[workspace.package]
+edition = "2021"
+license = "GPL-3.0-only"
+
+[profile.release]
+debug = 1          # symbols for profiling
+lto = "thin"
+codegen-units = 4
+
+[profile.bench]
+inherits = "release"

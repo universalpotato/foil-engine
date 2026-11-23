@@ -1,0 +1,22 @@
+[package]
+name = "mtg-core"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Deterministic, step-based MTG rules engine"
+
+[dependencies]
+forge-script = { path = "../forge-script" }
+serde = { version = "1", features = ["derive", "rc"] }
+serde_json = "1"
+smallvec = { version = "1", features = ["serde", "union", "const_generics"] }
+
+[features]
+# Engine-internal rules probes (`src/invariants.rs`): compiled only into mtg-core's own test
+# builds (the self dev-dependency below) and active only on threads that call
+# `invariants::enable_probes`. Other builds don't use dev-dependencies: no probes.
+invariants = []
+
+[dev-dependencies]
+mtg-core = { path = ".", features = ["invariants"] }
+rayon = "1"
